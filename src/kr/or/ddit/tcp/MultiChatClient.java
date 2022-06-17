@@ -56,11 +56,10 @@ public class MultiChatClient {
 
 
             String[] split = cmd.split(" ");
-
-            String cmdToLower = split[0].toLowerCase(Locale.ROOT);
-            if (split.length == 1) {
+            if (cmd.equals("/w") || cmd.equals("/ㅈ")) {
                 System.err.println("올바른 명령어가 아닙니다.");
             } else {
+                String cmdToLower = split[0].toLowerCase(Locale.ROOT);
                 switch (cmdToLower) {
 
                     // 종료
