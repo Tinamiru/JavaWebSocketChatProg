@@ -113,17 +113,15 @@ public class MultiChatServer {
 
         try {
             DataOutputStream dos = null;
-
             String userAndContent = msg.substring(3); // /w 명령어 제거
 
             int msgIdx = msg.indexOf(" ");
-
             int msgIdxTest = userAndContent.indexOf(" "); // 오류 많이나던거
             // ("/w a"처럼 공백조차 없이 입력이 될경우 오류가 발생. 이를 해결해기위해 userAndContent의
             // indexOf를 사용한 변수를 따로 지정하여 -1를 반환할 경우 content를 초기화 하지 않고 공백으로 남기도록 함)
 
             String content = "";
-            if (msgIdxTest > 0) {
+            if (msgIdxTest > 0 || msgIdx > 0) {
                 content = userAndContent.substring(msgIdx); // 수신자의 이름을 제외한 내용만을
             }
 

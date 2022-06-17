@@ -58,26 +58,29 @@ public class MultiChatClient {
             String[] split = cmd.split(" ");
 
             String cmdToLower = split[0].toLowerCase(Locale.ROOT);
+            if (split.length == 1) {
+                System.err.println("올바른 명령어가 아닙니다.");
+            } else {
+                switch (cmdToLower) {
 
-            switch (cmdToLower) {
-
-                // 종료
-                case "/exit":
-                    System.out.println("대화방을 종료합니다.");
-                    System.exit(0);
-                    break;
-                case "/?":
-                    System.out.println("======================= 명령어 ======================");
-                    System.out.println("/w \t: 귓속말을 전송합니다. (/w 사용자 메세지)");
-                    System.out.println("/? \t: 명령어 목록을 출력합니다.");
-                    System.out.println("/exit \t: 대화방을 나갑니다.");
-                    System.out.println("=====================================================");
-                    break;
-                case "/w":
-                    dos.writeUTF(cmd);
-                    break;
-                default:
-                    System.out.println("올바른 명령어가 아닙니다.");
+                    // 종료
+                    case "/exit":
+                        System.out.println("대화방을 종료합니다.");
+                        System.exit(0);
+                        break;
+                    case "/?":
+                        System.out.println("======================= 명령어 ======================");
+                        System.out.println("/w \t: 귓속말을 전송합니다. (/w 사용자 메세지)");
+                        System.out.println("/? \t: 명령어 목록을 출력합니다.");
+                        System.out.println("/exit \t: 대화방을 나갑니다.");
+                        System.out.println("=====================================================");
+                        break;
+                    case "/w":
+                        dos.writeUTF(cmd);
+                        break;
+                    default:
+                        System.err.println("올바른 명령어가 아닙니다.");
+                }
             }
         }
 
@@ -87,11 +90,11 @@ public class MultiChatClient {
                 if (dos != null) {
                     // 시작하자 마자 자신의 대화명을 서버로 전송한다.
                     String name = "";
-                        System.out.println("----------------------------------");
-                        System.out.println("대화명에는 특수문자를 사용할 수 없습니다.");
-                        System.out.println("----------------------------------");
+                    System.out.println("----------------------------------");
+                    System.out.println("대화명에는 특수문자를 사용할 수 없습니다.");
+                    System.out.println("----------------------------------");
                     while (true) {
-                        Thread.sleep(20);
+                        Thread.sleep(50);
                         System.out.print("대화명 >> ");
                         name = scanner.nextLine();
 
